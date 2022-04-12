@@ -1,0 +1,497 @@
+---
+title: "STAT 20 Redesign"
+institute: "Statistics Department, UC Berkeley "
+format: 
+  revealjs:
+    theme: "stat20.scss"
+    highlight-style: breezedark
+    slide-number: false
+    incremental: true
+    menu: false
+    title-slide-attributes:
+      data-background-image: "images/hex-background.png"
+      data-background-size: cover  
+    progress: false
+execute:
+  freeze: auto
+---
+
+# Content
+
+## {}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+::: poll
+What should a student be able to do after completing their first course in statistics?
+:::
+
+
+## STAT 20 2022
+
+- Introductory Statistics course with calculus pre-req
+- Fall: 800 students; Spring: 600 students
+- Primary audiences: Econ, Business, Statistics
+
+
+## {background-image="images/claims-1.jpg" background-size="contain"}
+
+<center>
+[To learn how to critique and construct]{.bigadage}
+[claims made using data]{.bigadage}
+</center>
+
+## {background-image="images/claims-2.jpg" background-size="contain"}
+
+<center>
+[To learn how to critique and construct]{.bigadage}
+[claims made using data]{.bigadage}
+</center>
+
+
+## Current focus of development
+
+1. Computing: the Data Frame
+2. Data Visualization
+3. Multivariate Thinking
+4. Tools for Inference: Simulation/resampling
+5. Causality
+
+
+## Computing: the Data Frame
+
+```{r echo = FALSE}
+library(palmerpenguins)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+set.seed(20)
+penguins %>%
+    slice_sample(prop = 1) %>%
+    select(1:4) %>%
+    slice(1:6) %>%
+    kbl() %>%
+    kable_classic("striped", full_width = F)
+```
+
+<br>
+
+. . .
+
+> **Goal**: Emphasize a recurrent data structure that is useful for understanding the unit of observation and variables.
+
+
+## Data Visualization
+
+> **Goal**: Provide a theory of graphics. More practice.
+
+. . .
+
+<br>
+
+**Grammar of Graphics**: A statistical graphic is a mapping of *data* variables to *aesthetic* attributes of *geometric* objects.
+
+```{r echo=FALSE, out.width="70%", fig.align='center'}
+knitr::include_graphics("images/grammar-of-graphics.png")
+# source: http://bloggotype.blogspot.com/2016/08/holiday-notes2-grammar-of-graphics.html
+```
+
+
+## 3 Questions to ask of every plot
+
+::: nonincremental
+1. **Data**: What data frame do I want to depict?
+2. **Aesthetics**: How do I want to map the variables of that data frame to the aesthetic attributes of the plot?
+3. **Geometry**: How do I want to graphically depict the observations?
+:::
+
+
+## John Arbuthnot's Christening Records {auto-animate=true}
+
+```{r}
+library(stat20data)
+data(arbuthnot)
+arbuthnot <- mutate(arbuthnot, total = girls + boys)
+```
+
+:::: columns
+::: {.column width="60%"}
+```{r fig.height=6}
+ggplot(arbuthnot, 
+       aes(x = year,
+           y = total)) +
+  geom_line() +
+  theme_gray(base_size = 20)
+```
+:::
+
+::: {.column width="40%" .fragment}
+::: nonincremental
+- **Data**: `arbuthnot`  
+- **Aesthetics**: map `year` to the x-axis, `total` count to the y-axis
+- **Geometry**: express observations as a line  
+:::
+
+::: {.fragment}
+```{r eval = FALSE, echo = TRUE}
+ggplot(arbuthnot, 
+       aes(x = year,
+           y = total)) +
+  geom_line()
+```
+:::
+:::
+::::
+
+
+## John Arbuthnot's Christening Records {auto-animate=true}
+
+:::: columns
+::: {.column width="60%"}
+```{r fig.height=6}
+ggplot(arbuthnot, 
+       aes(x = year,
+           y = total)) +
+  geom_point() +
+  theme_gray(base_size = 20)
+```
+:::
+
+::: {.column width="40%"}
+- **Data**: `arbuthnot`  
+- **Aesthetics**: map `year` to the x-axis, `total` count to the y-axis
+- **Geometry**: express observations as **points**  
+
+```{r eval = FALSE, echo = TRUE}
+#| code-line-numbers: "4"
+ggplot(arbuthnot, 
+       aes(x = year,
+           y = total)) +
+  geom_point()
+```
+:::
+::::
+
+
+## Multivariate Thinking
+
+> **Goal**: Become accustomed to thinking about the relationships between more than two variables.
+
+. . .
+
+<br>
+
+### Where does this come up?
+
+- Higher dimensional data visualization
+- Multiple regression
+
+
+## Tools for Inference
+
+. . .
+
+:::: columns
+::: {.column width="45%"}
+[Computational]{.inversebox}
+
+::: nonincremental
+- Simulation
+- Bootstrapping
+- Permutation tests
+:::
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%" .fragment}
+[Mathematical]{.inversebox}
+
+::: nonincremental
+- Binomial
+- Normal approximation
+- $t$-test
+- $\chi^2$
+- $F$
+:::
+:::
+::::
+
+. . .
+
+> **Goal**: Simplify, build intuition, build foundation
+
+
+## Causality
+
+> **Goal**: Approach causality constructively with a definition and different approaches to estimating causal effects.
+
+. . .
+
+:::: columns
+::: {.column width="40%"}
+```{r echo = FALSE, fig.align='center'}
+knitr::include_graphics("images/frost.png")
+```
+:::
+::: {.column width="6%"}
+:::
+::: {.column width="54%"}
+::: {.nonincremental}
+**Counterfactual**: relating to or expressing what has not happened or is not the case.
+
+- The outcome of taking the left path.
+- The outcome of taking the right path.
+
+> Only one of these are observed.
+
+:::
+:::
+::::
+
+## Lab: A Matter of Taste
+
+Students devise an experiment to test a claim *before* being taught experimental design.
+
+:::: columns
+::: {.column width="50%"}
+```{r echo = FALSE}
+knitr::include_graphics("images/la-croix.png")
+```
+:::
+::: {.column width="50%"}
+- Experiments are assessed based on their clarity, reproducibility, and internal consistency, not on correctness.
+:::
+::::
+
+
+## {background-image="images/exp-1.png" background-size="contain"}
+
+
+## {background-image="images/exp-2.png" background-size="contain"}
+
+
+## {background-image="images/taste-test-birdseye.png" background-size="contain"}
+
+
+## {background-image="images/exp-recap.png" background-size="contain"}
+
+
+
+## Current focus of development
+
+::: nonincremental
+1. Computing: the Data Frame
+2. Data Visualization
+3. Multivariate Thinking
+4. Tools for Inference: Simulation/resampling
+5. Causality
+:::
+
+
+# Course Design
+
+
+## Alternative Design
+
+> Split the massive lecture course into many parallel courses in a flipped structure with a shared curriculum.
+
+<br>
+
+. . .
+
+### Motivation
+::: nonincremental
+1. Construct an effective learning environments for students
+2. Allow curriculum to innovate while being robust to staffing changes
+3. Keep the instructor focus on teaching
+:::
+
+
+## Attendance
+
+<br>
+<br>
+
+. . .
+
+<center>
+Average lecture attendance across Statistics undergrad courses:
+
+<br>
+27%
+</center>
+
+<br>
+<br>
+
+::: nonincremental
+- The proportion of enrolled student attending live lecture is lower (large classes have lower attendance).
+- Discussion attendance is lower.
+:::
+
+
+## Course components
+
+::: nonincremental
+- Staffing
+- Scheduling
+- Spaces
+:::
+
+
+## Model 1 {background-image="images/stat-20-retreat-1.jpg" background-size="contain"}
+
+Class size: 600 students
+
+::: nonincremental
+- 1 Instructor
+    - Lecture to 600
+:::
+
+
+## Model 1 {background-image="images/stat-20-retreat-2.jpg" background-size="contain"}
+
+Class size: 600 students
+
+::: nonincremental
+- 1 Instructor
+    - Lecture to 600
+- 12 GSIs
+    - Teach labs to 2 sections
+:::
+
+
+## Model 1 {background-image="images/stat-20-retreat-3.jpg" background-size="contain"}
+
+Class size: 600 students
+
+::: nonincremental
+- 1 Instructor
+    - Lecture to 600
+- 12 GSIs
+    - Teach labs to 2 sections
+    - Grade
+- 5 Tutors
+    - Grade
+    - Run tutoring session
+:::
+
+    
+## Model 2 {background-image="images/stat-20-retreat-4.jpg" background-size="contain"}
+
+Class size: 600 students
+
+::: nonincremental
+- 6 Instructors
+    - 100 students each
+    - Faculty + GSI
+:::
+
+
+## Model 2 {background-image="images/stat-20-retreat-5.jpg" background-size="contain"}
+
+Class size: 600 students
+
+::: nonincremental
+- 6 Instructors
+    - 100 students each
+    - Faculty + GSI
+- 12 Assistants
+    - Grade
+    - Assist during class
+:::
+
+
+## {background-image="images/stat-20-retreat-6.jpg" background-size="contain" .smaller}
+
+:::: columns
+::: {.column width="50%"}
+*Who are the Instructors?*
+
+::: nonincremental
+- Senate faculty? Lecturers?
+- Our Ph.D.s? Others?
+:::
+:::
+
+::: {.column width="50%"}
+*Is this financially doable?*
+
+::: nonincremental
+- 20 hr GSI: $22k
+- 10 hr Reader/Tutor: $2.2K
+:::
+:::
+::::
+
+
+# Schedule
+
+
+## {background-image="images/stat-20-retreat-8.jpg" background-size="contain" .smaller}
+
+## {background-image="images/stat-20-retreat-9.jpg" background-size="contain"}
+
+:::: columns
+::: {.column width="50%" .nonincremental}
+<br>
+
+- 2 hrs
+- ~100 students
+- Instructor + Assistants
+- Blended format
+    - Worksheets / notebooks
+    - Activities
+    - Mini-lectures
+:::
+::::
+
+## {background-image="images/stat-20-retreat-10.jpg" background-size="contain" .smaller}
+
+:::: columns
+::: {.column width="50%"}
+:::
+::: {.column width="50%" .nonincremental}
+<br>
+
+- 1 hr
+
+**Week 1**
+
+- ~100 students
+- Assistants
+- In-class quiz
+
+<br>
+
+**Week 2**
+
+- ~600 students
+- Instructor(s)
+- Plenary lecture in evening
+:::
+::::
+
+# Spaces
+
+## {background-image="images/moffitt.png" background-size="contain"}
+
+## Models
+
+::: nonincremental
+- TEAL classes at MIT
+- PS 3, UC Berkeley, David Broockman
+:::
+
+
+## Feedback
+
+<br>
+
+::: poll
+What characteristics in a course would make it more appealing to teach?
+:::
