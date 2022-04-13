@@ -162,9 +162,11 @@ ggplot(arbuthnot,
 :::
 
 ::: {.column width="40%"}
+::: nonincremental
 - **Data**: `arbuthnot`  
 - **Aesthetics**: map `year` to the x-axis, `total` count to the y-axis
 - **Geometry**: express observations as **points**  
+:::
 
 ```{r eval = FALSE, echo = TRUE}
 #| code-line-numbers: "4"
@@ -319,7 +321,7 @@ knitr::include_graphics("images/la-croix.png")
 . . .
 
 <center>
-Average lecture attendance across Statistics undergrad courses:
+Average lecture attendance across Statistics and Data Science undergrad courses:
 
 <br>
 27%
@@ -329,8 +331,9 @@ Average lecture attendance across Statistics undergrad courses:
 <br>
 
 ::: nonincremental
-- The proportion of enrolled student attending live lecture is lower (large classes have lower attendance).
-- Discussion attendance is lower.
+- The proportion of enrolled students attending live lecture is lower (larger lower division classes have lower attendance).
+- Proportion of students recorded as having viewed part of a recorded lecture is often similar to the live attendance rate.
+- Discussion attendance is generally lower.
 :::
 
 

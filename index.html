@@ -6,8 +6,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="stat-20-redesign_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="stat-20-redesign_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -79,19 +79,19 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="stat-20-redesign_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css" id="theme">
 
-  <script src="stat-20-redesign_files/libs/clipboard/clipboard.min.js"></script>
-  <script src="stat-20-redesign_files/libs/quarto-html/tabby.min.js"></script>
-  <script src="stat-20-redesign_files/libs/quarto-html/popper.min.js"></script>
-  <script src="stat-20-redesign_files/libs/quarto-html/tippy.umd.min.js"></script>
-  <link href="stat-20-redesign_files/libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="stat-20-redesign_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet">
-  <link id="quarto-text-highlighting-styles" href="stat-20-redesign_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <link href="stat-20-redesign_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="stat-20-redesign_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="stat-20-redesign_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="stat-20-redesign_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <script src="index_files/libs/clipboard/clipboard.min.js"></script>
+  <script src="index_files/libs/quarto-html/tabby.min.js"></script>
+  <script src="index_files/libs/quarto-html/popper.min.js"></script>
+  <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+  <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -377,8 +377,8 @@
       margin-right: 0; 
     }
   </style>
-  <script src="stat-20-redesign_files/libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="stat-20-redesign_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+  <script src="index_files/libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="index_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body>
   <div class="reveal">
@@ -531,7 +531,7 @@
 <div class="column" style="width:60%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="stat-20-redesign_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 </div><div class="column fragment" style="width:40%;">
@@ -561,16 +561,19 @@
 <div class="column" style="width:60%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="stat-20-redesign_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
+<div>
 <ul>
-<li class="fragment"><strong>Data</strong>: <code>arbuthnot</code><br>
+<li><strong>Data</strong>: <code>arbuthnot</code><br>
 </li>
-<li class="fragment"><strong>Aesthetics</strong>: map <code>year</code> to the x-axis, <code>total</code> count to the y-axis</li>
-<li class="fragment"><strong>Geometry</strong>: express observations as <strong>points</strong></li>
+<li><strong>Aesthetics</strong>: map <code>year</code> to the x-axis, <code>total</code> count to the y-axis</li>
+<li><strong>Geometry</strong>: express observations as <strong>points</strong><br>
+</li>
 </ul>
+</div>
 <div class="cell">
 <div class="sourceCode" id="cb2" data-code-line-numbers="4"><pre class="sourceCode numberSource r cell-code number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb2-1" class="hljs-ln-code"><a href="#cb2-1"></a><span class="fu">ggplot</span>(arbuthnot, </span>
 <span id="cb2-2" class="hljs-ln-code"><a href="#cb2-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
@@ -731,14 +734,15 @@
 <p><br> <br></p>
 <div class="fragment">
 <center>
-<p>Average lecture attendance across Statistics undergrad courses:</p>
+<p>Average lecture attendance across Statistics and Data Science undergrad courses:</p>
 <br> 27%
 </center>
 <p><br> <br></p>
 <div>
 <ul>
-<li>The proportion of enrolled student attending live lecture is lower (large classes have lower attendance).</li>
-<li>Discussion attendance is lower.</li>
+<li>The proportion of enrolled students attending live lecture is lower (larger lower division classes have lower attendance).</li>
+<li>Proportion of students recorded as having viewed part of a recorded lecture is often similar to the live attendance rate.</li>
+<li>Discussion attendance is generally lower.</li>
 </ul>
 </div>
 </div>
@@ -940,18 +944,18 @@
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="stat-20-redesign_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
 
   <!-- reveal.js plugins -->
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/quarto-support/support.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="stat-20-redesign_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
 
