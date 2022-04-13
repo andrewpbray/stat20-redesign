@@ -316,7 +316,6 @@ knitr::include_graphics("images/la-croix.png")
 ## Attendance
 
 <br>
-<br>
 
 . . .
 
@@ -329,6 +328,8 @@ Average lecture attendance across Statistics and Data Science undergrad courses:
 
 <br>
 <br>
+
+. . .
 
 ::: nonincremental
 - The proportion of enrolled students attending live lecture is lower (larger lower division classes have lower attendance).
